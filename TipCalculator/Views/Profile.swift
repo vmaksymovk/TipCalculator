@@ -17,9 +17,10 @@ struct Profile: View {
             Spacer()
             
             List {
-                    Text("A List Item")
-                    Text("A Second List Item")
-                    Text("A Third List Item")
+                Section(header: Text("Account")) {
+                    Text("Username: Vladyslav")
+                    Text("Email: vmaksymovk@gmail.com")
+                }
                 }
         }
        

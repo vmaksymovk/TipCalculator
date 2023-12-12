@@ -20,7 +20,7 @@ struct Main: View {
                             Text("Bill")
                                 .foregroundColor(.white)
                                 .padding()
-                                .font(.title)
+                                .font(.system(size: 20))
                             
                             TextField("Enter bill amount", text: $billAmount)
                                 .padding(.trailing)
@@ -35,8 +35,11 @@ struct Main: View {
                     }
                 )
             
+            Spacer()
+            Text("How many people are paying?")
+                .font(.system(size: 20))
             HStack {
-                ForEach(0..<5, id: \.self) { index in
+                ForEach(0..<8, id: \.self) { index in
                     PersonCircleView(isSelected: index < numberOfPeople)
                         .onTapGesture {
                             numberOfPeople = index + 1
