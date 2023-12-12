@@ -21,6 +21,7 @@ struct Main: View {
                     .padding(.trailing)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     
+                    
             }
             Slider(value: $tipPercentage, in: 0...30, step: 1.0)
             Text("Tip Percentage: \(String(format: "%.0f", tipPercentage))%")
@@ -72,6 +73,9 @@ struct Main: View {
                 
             
         }// VStack end
+        .onTapGesture {
+            hideKeyboard()
+        }
         
         
     }

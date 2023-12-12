@@ -9,3 +9,7 @@ func calculateTip(billAmount : String, tipPercentage : Double) -> Double {
     return tip
 }
 
+func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+
