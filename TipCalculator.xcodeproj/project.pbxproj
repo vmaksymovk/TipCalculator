@@ -14,6 +14,7 @@
 		F56EC28C2B272D6700C49392 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56EC28B2B272D6700C49392 /* Main.swift */; };
 		F56EC28E2B272DD600C49392 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56EC28D2B272DD600C49392 /* Profile.swift */; };
 		F56EC2912B27304200C49392 /* TipManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56EC2902B27304200C49392 /* TipManager.swift */; };
+		F56EC2942B288D5F00C49392 /* PersonCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56EC2932B288D5F00C49392 /* PersonCircleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		F56EC28B2B272D6700C49392 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		F56EC28D2B272DD600C49392 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		F56EC2902B27304200C49392 /* TipManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipManager.swift; sourceTree = "<group>"; };
+		F56EC2932B288D5F00C49392 /* PersonCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCircleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 		F56EC27B2B272C5B00C49392 /* TipCalculator */ = {
 			isa = PBXGroup;
 			children = (
+				F56EC2922B288D4100C49392 /* AdditionalViews */,
 				F56EC28F2B27301C00C49392 /* Model */,
 				F56EC28A2B272D5700C49392 /* Views */,
 				F56EC27C2B272C5B00C49392 /* TipCalculatorApp.swift */,
@@ -90,6 +93,14 @@
 				F56EC2902B27304200C49392 /* TipManager.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		F56EC2922B288D4100C49392 /* AdditionalViews */ = {
+			isa = PBXGroup;
+			children = (
+				F56EC2932B288D5F00C49392 /* PersonCircleView.swift */,
+			);
+			path = AdditionalViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,6 +176,7 @@
 				F56EC2912B27304200C49392 /* TipManager.swift in Sources */,
 				F56EC28C2B272D6700C49392 /* Main.swift in Sources */,
 				F56EC28E2B272DD600C49392 /* Profile.swift in Sources */,
+				F56EC2942B288D5F00C49392 /* PersonCircleView.swift in Sources */,
 				F56EC27F2B272C5B00C49392 /* ContentView.swift in Sources */,
 				F56EC27D2B272C5B00C49392 /* TipCalculatorApp.swift in Sources */,
 			);

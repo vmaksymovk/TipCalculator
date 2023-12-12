@@ -1,92 +1,107 @@
-//
-//  Main.swift
-//  TipCalculator
-//
-//  Created by Влад on 12/11/23.
-//
-
 import SwiftUI
 
 struct Main: View {
     
     @State private var billAmount = ""
     @State private var tipPercentage = 15.0
+    @State private var numberOfPeople = 1
+    
     var body: some View {
-
-        VStack{
+        VStack {
             Spacer()
-            HStack{
-                Text("Amount")
-                TextField("Enter bill amount", text: $billAmount)
-                    .padding(.trailing)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    
-                    
-            }
-            Slider(value: $tipPercentage, in: 0...30, step: 1.0)
-            Text("Tip Percentage: \(String(format: "%.0f", tipPercentage))%")
-
             
+            Rectangle()
+                .foregroundColor(Color.blue)
+                .frame(width: 370, height: 140)
+                .cornerRadius(30)
+                .overlay(
+                    VStack {
+                        HStack {
+                            Text("Bill")
+                                .foregroundColor(.white)
+                                .padding()
+                                .font(.title)
+                            
+                            TextField("Enter bill amount", text: $billAmount)
+                                .padding(.trailing)
+                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                        }
+                        
+                        Slider(value: $tipPercentage, in: 0...30, step: 1.0)
+                            .accentColor(.white)
+                        
+                        Text("Tip Percentage: \(Int(tipPercentage))%")
+                            .foregroundColor(.white)
+                    }
+                )
+            
+            HStack {
+                ForEach(0..<5, id: \.self) { index in
+                    PersonCircleView(isSelected: index < numberOfPeople)
+                        .onTapGesture {
+                            numberOfPeople = index + 1
+                        }
+                }
+            }
             
             Spacer()
             
             Rectangle()
-                .foregroundColor(Color(hue: 0.409, saturation: 0.922, brightness: 0.23))
-                .frame(width: 350, height: 300)
+                .foregroundColor(Color.blue)
+                .frame(width: 370, height: 200)
                 .cornerRadius(30)
                 .overlay(
-                    VStack{
-                        HStack{ // Total amount of tip
+                    VStack {
+                        HStack {
                             Spacer()
                             Text("Tip Amount")
                                 .foregroundColor(.white)
                                 .font(.system(size: 20))
                             Spacer()
-                            Text("$\(String(format: "%.2f",calculateTip(billAmount: self.billAmount, tipPercentage: self.tipPercentage)))")
+                            Text("$\(String(format: "%.2f", calculateTip(billAmount: self.billAmount, tipPercentage: self.tipPercentage)))")
                                 .padding()
                                 .font(.system(size: 40))
-                                .foregroundColor(Color(hue: 0.482, saturation: 0.815, brightness: 0.805))
-                                
+                                .foregroundColor(.white)
                             Spacer()
-                            
                         }
                         
-                        
-                        HStack{ // Total amount
+                        HStack {
                             Spacer()
                             Text("Total")
                                 .foregroundColor(.white)
                                 .font(.system(size: 20))
                             Spacer()
-                            Text("$\(String(format: "%.2f",calculateTotal()))")
+                            Text("$\(String(format: "%.2f", (calculateTotal()/Double(numberOfPeople))))")
                                 .padding()
                                 .font(.system(size: 40))
-                                .foregroundColor(Color(hue: 0.482, saturation: 0.815, brightness: 0.805)) // Первый цвет
-
-                                
+                                .foregroundColor(.white)
                             Spacer()
-                            
                         }
-                        
                     }
                 )
-                
+                .padding()
             
-        }// VStack end
+        }
         .onTapGesture {
             hideKeyboard()
         }
-        
-        
     }
+    
     func calculateTotal() -> Double {
-            let bill = Double(billAmount) ?? 0
-            let tip = (calculateTip(billAmount: self.billAmount, tipPercentage: self.tipPercentage))
-            let total = bill + tip
-            return total
-        }
+        let bill = Double(billAmount) ?? 0
+        let tip = calculateTip(billAmount: self.billAmount, tipPercentage: self.tipPercentage)
+        let total = bill + tip
+        return total
+    }
+    
+    
+    
 }
 
-#Preview {
-    Main()
+#if DEBUG
+struct Main_Previews: PreviewProvider {
+    static var previews: some View {
+        Main()
+    }
 }
+#endif
