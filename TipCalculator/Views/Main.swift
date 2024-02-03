@@ -2,9 +2,10 @@ import SwiftUI
 
 struct Main: View {
     
-    @State private var billAmount = ""
-    @State private var tipPercentage = 15.0
-    @State private var numberOfPeople = 1
+    @AppStorage("billAmount") private var billAmount = ""
+    @AppStorage("tipPercentage") private var tipPercentage = 15.0
+    @AppStorage("numberOfPeople") private var numberOfPeople = 1
+    @State var DictionaryForHistory : [Date:String] = [:]
     
     var body: some View {
         VStack {

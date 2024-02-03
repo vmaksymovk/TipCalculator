@@ -10,7 +10,7 @@ import SwiftUI
 struct PersonCircleView: View {
     var isSelected: Bool
     var body: some View {
-        Image(systemName: isSelected ? "person.fill" : "person")
+        Image(systemName: isSelected ? "person.fill" : "person.slash.fill")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 40, height: 40)
