@@ -5,7 +5,8 @@ struct Main: View {
     @AppStorage("billAmount") private var billAmount = ""
     @AppStorage("tipPercentage") private var tipPercentage = 15.0
     @AppStorage("numberOfPeople") private var numberOfPeople = 1
-    @State var DictionaryForHistory : [Date:String] = [:]
+    @StateObject private var userData = UserData()
+    
     
     var body: some View {
         VStack {
@@ -117,11 +118,11 @@ struct Main: View {
         let currentDate = Date()
         
         // Add the bill amount and date to the dictionary
-        DictionaryForHistory[Date.now] = "\(amount)$"
+        userData.DictionaryForHistory[currentDate] = "\(amount)$"
         
         // Optionally, you can reset the billAmount to an empty string after saving
         billAmount = ""
-        print(DictionaryForHistory)
+        print(userData.DictionaryForHistory)
     }
     
     

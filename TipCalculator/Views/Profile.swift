@@ -21,7 +21,7 @@ struct Profile: View {
                     Section(header: Text("Account")) {
                         Text("Username: Vladyslav")
                         Text("Email: vmaksymovk@gmail.com")
-                        NavigationLink(destination: HistoryView()){
+                        NavigationLink(destination: HistoryView(userData: UserData())){
                             Text("History")
                         }
                     }//end list

@@ -8,11 +8,19 @@
 import SwiftUI
 
 struct HistoryView: View {
+    @ObservedObject var userData : UserData
     var body: some View {
-        Text("Hello, World!")
+        VStack{
+            
+            List {
+                ForEach(userData.DictionaryForHistory.sorted(by: { $0.key > $1.key }), id: \.key) { date, billAmount in
+                    Text("\(date): \(billAmount)")
+                }
+            }
+        }
     }
 }
 
 #Preview {
-    HistoryView()
+    HistoryView(userData: UserData())
 }
