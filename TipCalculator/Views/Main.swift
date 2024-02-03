@@ -81,14 +81,24 @@ struct Main: View {
                                 .foregroundColor(.white)
                             Spacer()
                         }
+                        Button("Save to history") {
+                            saveBill()
+                        }
+                        .foregroundStyle(.white)
+                        Spacer()
+                        
+                        
+                        
                     }
                 )
                 .padding()
             
         }
+        
         .onTapGesture {
             hideKeyboard()
         }
+        
     }
     
     func calculateTotal() -> Double {
@@ -96,6 +106,22 @@ struct Main: View {
         let tip = calculateTip(billAmount: self.billAmount, tipPercentage: self.tipPercentage)
         let total = bill + tip
         return total
+    }
+    
+    func saveBill(){
+        guard let amount = Double(billAmount) else {
+            // Handle invalid input
+            return
+        }
+        
+        let currentDate = Date()
+        
+        // Add the bill amount and date to the dictionary
+        DictionaryForHistory[Date.now] = "\(amount)$"
+        
+        // Optionally, you can reset the billAmount to an empty string after saving
+        billAmount = ""
+        print(DictionaryForHistory)
     }
     
     
